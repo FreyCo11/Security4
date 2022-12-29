@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+    <h1>Decode Morse</h1>
+    <div id="output1"></div>
+    <div id="output2"></div>
+
+    <script>
+        function decode(morseCode) {
+            const ref = {
+                '.-': 'a',
+                '-...': 'b',
+                '-.-.': 'c',
+                '-..': 'd',
+                '.': 'e',
+                '..-.': 'f',
+                '--.': 'g',
+                '....': 'h',
+                '..': 'i',
+                '.---': 'j',
+                '-.-': 'k',
+                '.-..': 'l',
+                '--': 'm',
+                '-.': 'n',
+                '---': 'o',
+                '.--.': 'p',
+                '--.-': 'q',
+                '.-.': 'r',
+                '...': 's',
+                '-': 't',
+                '..-': 'u',
+                '...-': 'v',
+                '.--': 'w',
+                '-..-': 'x',
+                '-.--': 'y',
+                '--..': 'z',
+                '.----': '1',
+                '..---': '2',
+                '...--': '3',
+                '....-': '4',
+                '.....': '5',
+                '-....': '6',
+                '--...': '7',
+                '---..': '8',
+                '----.': '9',
+                '-----': '0',
+            };
+
+        // Separate words: '   ' (3 spaces)
+        // Separate letters: ' ' (1 space)
+            morseCode = morseCode
+                .split("  ") //splits the sentence in words
+                .map(
+                    a => a
+                        .split(" ") //splits the words into morse letters
+                        .map(
+                            b => ref[b] //get the right letter (from the morse letter) from the directory
+                        ).join("") //join letter together with no space
+                ).join(" ") //join words togeher with space
+        // TODO: Decode morse messages
+            return morseCode;
+        }
+
+        const encoded = '- .... .. ... .. ... - .... . ... . -.-. ..- .-. .. - -.-- -.-. --- ..- .-. ... . .- -. -.. -. --- .-- .-- . .-. . . -. -.-. --- -.. .. -. --.';
+        const decoded = decode(encoded);
+
+        document.getElementById('output1').textContent = encoded;
+        document.getElementById('output2').textContent = decoded;
+    </script>
+</body>
+</html>

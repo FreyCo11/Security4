@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+    <h1>Ceasar Cypher</h1>
+    <div id="output1"></div>
+    <div id="output2"></div>
+
+<script>
+    function rot_char(shift, character) {
+	    character = character.charCodeAt(0)
+    
+	    // TODO: Shift 'character' by 'shift'
+        // console.log(String.fromCharCode(character));
+        character = character + shift
+        // console.log(String.fromCharCode(character));
+	    return String.fromCharCode(character);
+    }
+
+    function rot(shift, message) {
+	    message = message.toUpperCase();
+
+	    let result = '';
+	    // TODO: Call rot_char for each character
+        for (var i = 0; i < message.length; i++) {
+          result += rot_char(shift, message[i])
+        }
+	    return result;
+    }
+
+    const shift = 3;
+    const encrypted = rot(shift, "Hello, my name is Vincent, nice to meet you all!");
+    // TODO: Set correct shift to decrypt
+    const decrypted = rot(-3, encrypted);
+
+    document.getElementById('output1').textContent = encrypted;
+    document.getElementById('output2').textContent = decrypted;
+</script>
+</body>
+</html>

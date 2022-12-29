@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>Encode Morse</h1>
+<div id="output1"></div>
+<div id="output2"></div>
+
+<script>
+    var morseCode = [".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."];
+
+    var morseObj = {};
+    for (var i = 97, l = 97 + morseCode.length; i < l; i++) {
+        morseObj[String.fromCharCode(i)] = morseCode[i - 97]
+        // console.log(String.fromCharCode(i))
+        // console.log(morseCode[i - 97])
+    }
+
+    // console.log(morseObj)
+
+    function encode(sentence) {
+        sentence = sentence.toLowerCase();
+
+
+        sentence = sentence
+            .split(" ")
+            .map(
+                a => a
+                    .split("")
+                    .map(
+                        b => morseObj[b]
+                    ).join(" ")
+            ).join("   ");
+
+        return sentence
+    }
+
+    const decoded = 'This is the security course and now were encoding';
+    const encoded = encode(decoded);
+
+    document.getElementById('output1').textContent = decoded;
+    document.getElementById('output2').textContent = encoded; 
+</script>
+</body>
+</html>
